@@ -38,7 +38,7 @@ init 970 python:
 
     if persistent._mas_moni_chksum is not None:
 #        mas_temp_moni_chksum = persistent._mas_moni_chksum
-        
+
         # do check for monika existence
         store.mas_dockstat.init_findMonika(mas_docking_station)
 
@@ -901,8 +901,7 @@ label ch30_post_exp_check:
     # we assume here that you set selected_greeting if you needed to
 
     # file reactions
-    if mas_isMonikaBirthday() or mas_isO31():
-        $ mas_checkReactions()
+    $ mas_checkReactions()
 
     #Run actions for any events that need to be changed based on a condition
     $ evhand.event_database=Event.checkConditionals(evhand.event_database)
@@ -1018,8 +1017,7 @@ label ch30_loop:
             mas_runDelayedActions(MAS_FC_IDLE_ROUTINE)
 
             # run file checks
-            if mas_isMonikaBirthday() or mas_isO31():
-                mas_checkReactions()
+            mas_checkReactions()
 
             # TODO: o31 fielc ehckes
 
@@ -1049,7 +1047,7 @@ label ch30_post_mid_loop_eval:
 
         # Thunder / lightening if enabled
         if (
-                store.mas_globals.show_lightning 
+                store.mas_globals.show_lightning
                 and renpy.random.randint(
                     1, store.mas_globals.lightning_chance
                 ) == 1
@@ -1208,7 +1206,7 @@ label ch30_reset:
 
         if persistent._mas_hair_changed:
             unlockEventLabel("monika_hair_down")
-    
+
         # setup hair / clothes
         monika_chr.change_outfit(
             store.mas_sprites.CLOTH_MAP[persistent._mas_monika_clothes],
